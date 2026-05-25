@@ -14,6 +14,7 @@ Listar las tablas: aws dynamodb list-tables --endpoint-url http://localhost:8000
 Limpiar proyecto: gradlew clean
 Detener el servicio: gradlew --stop
 Iniciar el servicio: gradlew run
+Generar para AWS: gradlew clean shadowJar
 
 == Colección Postman ==
 https://galactic-equinox-772661.postman.co/workspace/Core-Server~a5319ca5-12cd-4e09-8d5d-6359aa2ca764/collection/39947254-933d22c2-de81-4286-a3b3-b08ffa6bc59e?action=share&creator=39947254
