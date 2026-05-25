@@ -24,6 +24,8 @@ dependencies {
     implementation("software.amazon.awssdk:dynamodb")
     implementation("io.micronaut.views:micronaut-views-thymeleaf")
     implementation("org.thymeleaf:thymeleaf")
+    implementation("io.micronaut.aws:micronaut-function-aws-api-proxy")
+    implementation("io.micronaut.aws:micronaut-aws-sdk-v2")
     compileOnly("io.micronaut:micronaut-http-client-jdk")
     runtimeOnly("ch.qos.logback:logback-classic")
     testImplementation("io.micronaut:micronaut-http-client-jdk")

@@ -26,6 +26,7 @@ public class WebController
     {
         Map<String, Object> model = new HashMap<>();
 
+        model.put("baseUrl", "/prod");
         model.put("mensaje", mensaje);
 	model.put("clientes", service.listar());
 
@@ -57,6 +58,6 @@ public class WebController
 
         service.crear(cliente);
 
-        return HttpResponse.redirect(URI.create("/?mensaje=Cliente%20guardado%20satisfactoriamente"));
+        return HttpResponse.redirect(URI.create("/prod/?mensaje=Cliente%20guardado%20satisfactoriamente"));
     }
 }
