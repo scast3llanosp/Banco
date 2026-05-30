@@ -12,8 +12,8 @@
     <h1>Clientes</h1>
     <form th:action="@{${baseUrl} + '/clientes/guardar'}" method="post">
         <input type="number" name="id" placeholder="ID"><br><br>
+	<input type="text" name="apellidos" placeholder="Apellidos"><br><br>
         <input type="text" name="nombres" placeholder="Nombres"><br><br>
-        <input type="text" name="apellidos" placeholder="Apellidos"><br><br>
         <input type="text" name="direccion" placeholder="Dirección"><br><br>
         <input type="text" name="fechaNacimiento" placeholder="1990-01-01"><br><br>
         <input type="text" name="telefono" placeholder="Teléfono"><br><br>
@@ -29,8 +29,8 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nombres</th>
                 <th>Apellidos</th>
+                <th>Nombres</th>
                 <th>Dirección</th>
                 <th>Fecha Nacimiento</th>
                 <th>Teléfono</th>
@@ -41,8 +41,8 @@
         <tbody>
             <tr th:each="cliente : ${clientes}">
                 <td th:text="${cliente.id}"></td>
-                <td th:text="${cliente.nombres}"></td>
                 <td th:text="${cliente.apellidos}"></td>
+                <td th:text="${cliente.nombres}"></td>
                 <td th:text="${cliente.direccion}"></td>
                 <td th:text="${cliente.fechaNacimiento}"></td>
                 <td th:text="${cliente.telefono}"></td>

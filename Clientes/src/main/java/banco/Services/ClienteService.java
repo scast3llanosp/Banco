@@ -70,6 +70,7 @@ public class ClienteService
         {
             clientes.add(mapear(item));
         }
+        clientes.sort(Comparator.comparing(Cliente::getApellidos));
 
         return clientes;
     }
@@ -97,14 +98,33 @@ public class ClienteService
         Cliente cliente = new Cliente();
 
         cliente.setId(Long.parseLong(item.get("id").n()));
-        cliente.setNombres(item.get("nombres").s());
-        cliente.setApellidos(item.get("apellidos").s());
-        cliente.setDireccion(item.get("direccion").s());
+        cliente.setNombres(toCamelCase(item.get("nombres").s()));
+        cliente.setApellidos(toCamelCase(item.get("apellidos").s()));
+        cliente.setDireccion(toCamelCase(item.get("direccion").s()));
         cliente.setFechaNacimiento(item.get("fechaNacimiento").s());
         cliente.setTelefono(item.get("telefono").s());
         cliente.setIdentificacion(item.get("identificacion").s());
         cliente.setTipoIdentificacion(Integer.parseInt(item.get("tipoIdentificacion").n()));
 
         return cliente;
+    }
+
+    public static String toCamelCase(String text)
+    {
+        int i;
+        StringBuilder result = new StringBuilder();
+        String[] words = text.trim().split("[\\s_-]+");
+
+        for (i = 0; i < words.length; i++)
+        {
+            if (!words[i].isEmpty())
+            {
+                result.append(Character.toUpperCase(words[i].charAt(0)));
+                result.append(words[i].substring(1).toLowerCase());
+                result.append(" ");
+            }
+        }
+
+        return result.toString();
     }
 }

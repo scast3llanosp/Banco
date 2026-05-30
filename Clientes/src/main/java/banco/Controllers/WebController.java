@@ -5,6 +5,7 @@ import io.micronaut.http.annotation.*;
 import io.micronaut.views.View;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.HttpResponse;
+import io.micronaut.context.annotation.Value;
 import java.net.URI;
 import io.micronaut.http.annotation.QueryValue;
 import java.util.HashMap;
@@ -14,6 +15,8 @@ import java.util.Map;
 public class WebController
 {
     private final ClienteService service;
+    @Value("${app.base-url:}")
+    private String baseUrl;
 
     public WebController(ClienteService service)
     {
@@ -26,7 +29,7 @@ public class WebController
     {
         Map<String, Object> model = new HashMap<>();
 
-        model.put("baseUrl", "/prod");
+        model.put("baseUrl", baseUrl);
         model.put("mensaje", mensaje);
 	model.put("clientes", service.listar());
 
@@ -58,6 +61,6 @@ public class WebController
 
         service.crear(cliente);
 
-        return HttpResponse.redirect(URI.create("/prod/?mensaje=Cliente%20guardado%20satisfactoriamente"));
+        return HttpResponse.redirect(URI.create(baseUrl + "/?mensaje=Cliente%20guardado%20satisfactoriamente"));
     }
 }
